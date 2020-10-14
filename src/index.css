@@ -1,13 +1,108 @@
-body {
+html{
+  min-height: 100%;
+}
+
+#bod {
   margin: 0;
+  position: relative; 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: linear-gradient(to right, #272727, #585858) !important; */
+  background: linear-gradient(rgba(65,63,63,.7), rgba(65,63,63,.7)),url(/assets/b2.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* height: 100%; */
+  min-height: 100%;
+  color: white;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.MyNav {
+  /* background-image: linear-gradient(to bottom, #C3073F , #950740, #6F2232) !important; */
+  background-color: #3d3d3d !important;
+  margin-bottom: 0 !important;
+  
+}
+
+.nav-brand{
+  color: #26d891 !important;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px !important;
+  text-shadow: -1px 1px 0 #4E4E50;
+}
+
+/* //////////////////// */
+
+.main{
+  /* background-color: rgba(65, 63, 63, 0.7); */
+  height: 100% !important;
+  /* padding-bottom: 100%; */
+  margin-top: 0 !important;
+}
+
+.scan-item {
+  
+  padding: 30px;
+  /* border-radius: 20%; */
+}
+
+.yellow-color{
+  background-color: #FFE400 !important;
+}
+
+.orange-color{
+  background-color: #FF652F !important;
+}
+.green-color{
+  background-color: #14A76C !important;
+}
+
+.purple-color{
+  background-color: #6e01f8 !important;
+}
+.grey-color{
+  background-color: #747474 !important;
+  border-color: rosybrown;
+}
+
+.grey-text{
+  color: #747474 !important;
+}
+
+.flex-cont {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+
+
+
+/* sidebar */
+
+
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.orange-pad {
+  background-image: linear-gradient(to right, #FF652F , #6e01f8) !important;
+  margin-top: 30px;
+  padding: 10px;
 }
