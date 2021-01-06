@@ -6,17 +6,9 @@ const About = () => {
         <Container>
             <div style={{ marginTop: '100px', backgroundColor: 'white', color: 'black', padding: '50px', borderRadius: '20px', textAlign:'center' }}>
                 <h1>About</h1>    
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <h3>item 1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <h3>item 1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia tenetur laudantium reiciendis, dolore doloremque dolorum sapiente voluptate nihil accusantium voluptates. At cupiditate deserunt quam asperiores ab, possimus incidunt aspernatur fuga?</p>
+                <br/>
+                <p>"Some people call this artificial intelligence, but the reality is this technology will enhance us. So instead of artificial intelligence, I think we'll augment our intelligence."</p>
+                <p>—Ginni Rometty</p>
             </div>
         </Container>
      );

@@ -3,18 +3,18 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { FaSearch, FaPencilAlt, FaUserPlus } from 'react-icons/fa'
 import UserList from './UserList';
 import Modal from 'react-modal'
-import { Redirect } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 
 import UserAdd from './UserAdd';
 import { UserContext } from '../../context/UserContext';
 import { AuthContext } from '../../context/AuthContext';
 Modal.setAppElement('#root');
-const UserPage = () => {
+const UserPage = (props) => {
     const [idQuery, setIdQuery] = useState('')
     const [editState, setEditState] = useState(false)
     const [addState, setAddState] = useState(false)
-    const [deleteState, setDeleteState] = useState([false, null])
+    const [deleteState, setDeleteState] = useState([false, null,null,null])
 
     const { users, dispatch } = useContext(UserContext)
     const [localUsers, setLocalUsers] = useState(users)
@@ -26,10 +26,10 @@ const UserPage = () => {
         if (idQuery == '') {
             setLocalUsers(users) 
         } else {
-            const searchResult = users.filter(user => (user.fname.includes(idQuery)||user.lname.includes(idQuery)))
+            const searchResult = users.filter(user => user.fname.toLowerCase().includes(idQuery) || user.lname.toLowerCase().includes(idQuery) || user.fname.includes(idQuery) || user.lname.includes(idQuery) )
             setLocalUsers(searchResult) 
         }
-        console.log(idQuery)
+
     }, [idQuery])
 
     useEffect(() => {
@@ -62,8 +62,8 @@ const UserPage = () => {
     }, [addState])
 
     useEffect(() => {
-        setDeleteState([false, null])
-        console.log(users)
+        setDeleteState([false, null,null,null,null])
+        // console.log(users)
             setLocalUsers(users)    
     }, [users])
 
@@ -85,9 +85,8 @@ const UserPage = () => {
     const toggleEdit = () => {
         setEditState(!editState);
     }
-    const toggleDelete = (id) => {
-        setDeleteState([!deleteState[0], id]);
-        console.log(deleteState)
+    const toggleDelete = (id,personID,group) => {
+        setDeleteState([!deleteState[0], id,personID,group]);
     }
 
     const toggleAdd = () => {
@@ -99,35 +98,7 @@ const UserPage = () => {
             if (Object.entries(userProfile).length != 0) {
                 return (
                     <Container>
-                        <Modal isOpen={addState} onRequestClose={() => setAddState(false)}
-                            style={
-                                {
-                                    overlay: {
-                                        backgroundColor: 'rgb(0,0,0,0.5)',
-                                    },
-                                    content: {
-                                        backgroundColor: 'white',
-                                        border: '0',
-                                        borderRadius: '4px',
-                                        bottom: 'auto',
-                                        minHeight: '35rem',
-                                        left: '50%',
-                                        padding: '50px',
-                                        position: 'fixed',
-                                        right: 'auto',
-                                        top: '50%',
-                                        transform: 'translate(-50%,-50%)',
-                                        minWidth: '30rem',
-                                        width: '80%',
-                                        maxWidth: '40rem'
-                                    }
-                                }
-                            }>
-                            <UserAdd setAddState={setAddState} />
-                        </Modal>
-
-
-                        <Modal isOpen={deleteState[0]} onRequestClose={() => setDeleteState(false, null)}
+                        <Modal isOpen={deleteState[0]} onRequestClose={() => setDeleteState(false, null,null,null)}
                             style={
                                 {
                                     overlay: {
@@ -149,6 +120,7 @@ const UserPage = () => {
                                         width: '80%',
                                         maxWidth: '40rem'
                                     }
+                                    
                                 }
                             }>
                             <div style={{ position: 'relative' }}>
@@ -158,17 +130,15 @@ const UserPage = () => {
                                         style={{ position: 'absolute', right: '1em' }}
                                         onClick={() => setDeleteState(false, null)}>
                                         Cancel
-                    </Button>
+                                    </Button>
                                     <Button variant="danger"
                                         style={{ position: 'absolute', right: '6em' }}
-                                        onClick={() => dispatch({ type: 'DELETE_USER', id: deleteState[1] })}>
+                                        onClick={() => dispatch({ type: 'DELETE_USER', id: deleteState[1],personID:deleteState[2],group:deleteState[3] })}>
                                         Confirm
-                    </Button>
+                                     </Button>
                                 </div>
                             </div>
                         </Modal>
-
-                        
 
                         <Form id='search' style={{ marginTop: '40px', marginLeft: '10px' }} onSubmit={handleSubmit}>
                             <Form.Group controlId="idQuery">
@@ -182,19 +152,19 @@ const UserPage = () => {
                         </Form>
                         <Container style={{ padding: '30px', marginTop: '30px', backgroundColor: 'white' }}>
                             <h3 className='grey-text'>Results found: {localUsers.length}</h3>
-                            <UserList editState={editState} toggleDelete={toggleDelete} users={localUsers} />
+                            <UserList editState={editState} toggleDelete={toggleDelete} users={localUsers} history={ props.history}/>
                         </Container>
                         {userProfile.isAdmin ? (
                             <div>
-                                <div style={{ position: "fixed", right: 0, bottom: 80 }}>
+                                <div style={{ position: "fixed", right: 0, bottom: 10 }}>
                             <Button variant="dark" onClick={toggleEdit} id='editButtonFloat'
                                 style={{ borderRadius: '30px 30px 30px 30px', padding: '15px', margin: '20px' }}>
                                 <FaPencilAlt id='editIcon' style={{ fontSize: '30px' }} />
                             </Button>
 
                         </div>
-                        <div style={{ position: "fixed", right: 0, bottom: 160 }}>
-                            <Button variant="dark" onClick={toggleAdd} id='addButtonFloat'
+                        <div style={{ position: "fixed", right: 0, bottom: 80 }}>
+                                    <Button as={NavLink} to={'/useradd'} variant="dark" onClick={toggleAdd} id='addButtonFloat'
                                 style={{ borderRadius: '30px 30px 30px 30px', padding: '15px', margin: '20px', backgroundColor: '#6e01f8' }}>
                                 <FaUserPlus id='addIcon' style={{ fontSize: '30px', color: 'white' }} />
                             </Button>

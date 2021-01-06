@@ -10,7 +10,7 @@ export const AuthReducer = (state, action) => {
             }
         case 'SIGNOUT':{
             firebase.auth().signOut().then(() => {
-                console.log('signed out')
+                // console.log('signed out')
             }).catch((err) => console.log(err))
             break
         }

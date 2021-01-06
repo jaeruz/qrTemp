@@ -11,7 +11,8 @@ html{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-image: linear-gradient(to right, #272727, #585858) !important; */
-  background: linear-gradient(rgba(65,63,63,.7), rgba(65,63,63,.7)),url(/assets/b2.jpg) no-repeat;
+  /* background: linear-gradient(rgba(65,63,63,.7), rgba(65,63,63,.7)),url(/assets/b2.jpg) no-repeat; */
+  background-color: whitesmoke;
   background-size: cover;
   background-position: center;
   /* height: 100%; */
@@ -29,11 +30,11 @@ code {
   /* background-image: linear-gradient(to bottom, #C3073F , #950740, #6F2232) !important; */
   background-color: #3d3d3d !important;
   margin-bottom: 0 !important;
-  
+  z-index: 50 !important;
 }
 
 .nav-brand{
-  color: #26d891 !important;
+  color: #FF652F !important;
   font-weight: bold;
   font-family: monospace;
   font-size: 30px !important;
@@ -102,7 +103,14 @@ code {
 }
 
 .orange-pad {
-  background-image: linear-gradient(to right, #FF652F , #6e01f8) !important;
+  /* background-image: linear-gradient(to right, #FF652F , #6e01f8) !important; */
+  background-color: white;
+  color: black;
   margin-top: 30px;
   padding: 10px;
+}
+
+.login-modal{
+  color: black;
+  padding-top: 120px !important;
 }

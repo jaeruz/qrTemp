@@ -10,7 +10,7 @@ const UserContextProvider = (props) => {
         // console.log(users)
         const unsubscribe = firebase
             .firestore()
-            .collection('employees')
+            .collection('persons')
             .onSnapshot((snapshot) => {
                 const users = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -18,6 +18,7 @@ const UserContextProvider = (props) => {
                 }))
                 dispatch({ type: 'ADD_USER', users });
             })
+        
         return unsubscribe;
     }, [])
     return (

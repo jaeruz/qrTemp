@@ -1,32 +1,27 @@
 import React, { useState ,useContext} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter,Router, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter,Switch, Route } from 'react-router-dom';
 
 import MyNavbar from './components/layout/MyNavbar';
-import { Container, Button } from 'react-bootstrap';
-import { FaBarcode } from 'react-icons/fa'
-import ScanPage from './components/pages/ScanPage';
+import { Container,Modal } from 'react-bootstrap';
+
 import SignIn from './components/auth/SignIn';
 import Dashboard from './components/pages/Dashboard';
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 import UserPage from './components/pages/UserPage';
 import UserContextProvider from './context/UserContext';
 import Home from './components/pages/Home';
-import AuthContextProvider, { AuthContext } from './context/AuthContext';
+import AuthContextProvider from './context/AuthContext';
+import HelmetContextProvider from './context/HelmetContext'
 import SignUp from './components/auth/SignUp';
 import About from './components/pages/About';
 import { createBrowserHistory } from 'history';
+import UserAdd from './components/pages/UserAdd';
+import CreateGroup from './components/procedure/CreateGroup'
+import Train from './components/procedure/Train'
+import UserProfile from './components/pages/UserProfile';
 
-// import firebase from './config/fbConfig'
-
-
-// // firebase.firestore().collection('employees').add({
-// //   fname: 'jaeruz',
-// //   lname: 'datiles'
-// // })
-
-Modal.setAppElement('#root');
 const history = createBrowserHistory();
 
 function App() {
@@ -36,50 +31,29 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
-      <UserContextProvider>
+        <UserContextProvider>
+          <HelmetContextProvider>
         <div className="App">
-
-          <Modal isOpen={loginModal} onRequestClose={() => setLoginModal(false)} shouldCloseOnOverlayClick={true}
-            style={
-              {
-                overlay: {
-                  backgroundColor: 'rgb(0,0,0,0.5)',
-                },
-                content: {
-                  backgroundColor: 'white',
-                  color: 'black',
-                  border: '0',
-                  borderRadius: '4px',
-                  bottom: 'auto',
-                  minHeight: '30rem',
-                  left: '50%',
-                  padding: '50px',
-                  position: 'fixed',
-                  right: 'auto',
-                  top: '50%',
-                  transform: 'translate(-50%,-50%)',
-                  minWidth: '20rem',
-                  width: '80%',
-                  maxWidth: '40rem'
-                }
-              }
-            }>
-              <SignIn setLoginModal={setLoginModal} history={history}/>
+          <Modal show={loginModal} onHide={() => setLoginModal(false)} dialogClassName="login-modal">
+            <SignIn setLoginModal={setLoginModal} history={history}/>
           </Modal>
-            {/* <Route path='/' component={() => <MyNavbar setLoginModal={setLoginModal} /> }/> */}
           <MyNavbar setLoginModal={setLoginModal} />
           <Container fluid className='main' style={{ position: "relative" }}>
 
 
 
             <Switch>
-                <Route exact path="/" component={() => (<Home setLoginModal={setLoginModal} loginModal={loginModal}/>)}></Route>
+              <Route exact path="/" component={() => (<Home setLoginModal={setLoginModal} loginModal={loginModal}/>)}></Route>
                 {/* <Route path="/home" component={Home}></Route> */}
               <Route path="/about" component={About}></Route>
-              <Route path="/scan" component={ScanPage}></Route>
+              {/* <Route path="/scan" component={ScanPage}></Route> */}
               <Route path="/dashboard" component={Dashboard}></Route>
-                <Route path="/users" component={UserPage}></Route>
-                <Route path="/signup" component={SignUp}></Route>
+              <Route path="/users" component={UserPage}></Route>
+              <Route path="/signup" component={SignUp}></Route>
+                  <Route path="/useradd" component={UserAdd}></Route>
+                  <Route path="/profile/:id" component={UserProfile}></Route>
+              <Route path="/creategroup" component={CreateGroup}></Route>
+              <Route path="/train" component={Train}></Route>
             </Switch>
              
               
@@ -87,7 +61,8 @@ function App() {
             
           </Container>
 
-        </div>
+            </div>
+            </HelmetContextProvider>
         </UserContextProvider>
         </AuthContextProvider>
     </BrowserRouter >

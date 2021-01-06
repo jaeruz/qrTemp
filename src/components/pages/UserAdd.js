@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useContext } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { UserContext } from '../../context/UserContext';
 import firebase from '../../config/fbConfig'
+import AddPerson from '../procedure/AddPerson'
 
 const UserAdd = ({ setAddState }) => {
     const { dispatch } = useContext(UserContext)
@@ -38,39 +39,7 @@ const UserAdd = ({ setAddState }) => {
 
     return (
         <Container style={{ color: 'black' }}>
-            <Row className="justify-content-md-center">
-                <Col lg={12} style={{ padding: '30px', borderRadius: '20px' }}>
-                    <h5 className="dash-title">Add Employee</h5>
-                    <br />
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Row>
-                            <Form.Group as={Col} controlId="fname">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control type="text" placeholder="First Name" onChange={handleChange} />
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="lname">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control type="text" placeholder="Last Name" onChange={handleChange} />
-                            </Form.Group>
-                        </Form.Row>
-
-                        <Form.Group controlId="address">
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="1234 Main St" onChange={handleChange} />
-                        </Form.Group>
-
-                        <Form.Group controlId="email">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={handleChange} />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                                </Form.Text>
-                        </Form.Group>
-                        <Button className="form-but" variant="primary" type="submit">Add</Button>
-                    </Form>
-                </Col>
-            </Row>
+            <AddPerson/>
         </Container>
     );
 }

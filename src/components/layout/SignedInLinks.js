@@ -31,26 +31,23 @@ const SignedInLinks = ({profile}) => {
                 {userProfile ? (<Avatar size="40" name={userProfile.fname + ' ' + userProfile.lname} round={true} style={{ margin: '10px' }} />):(null)}
                 
                 <NavDropdown title={nameTitle} id="collasible-nav-dropdown" style={{marginTop:'10px'}}>
-                    <NavDropdown.Item as={NavLink} to="/dashboard">Dashboard</NavDropdown.Item>
-                    <NavDropdown.Item as={NavLink} to="/users">Employees</NavDropdown.Item>
+                        {/* <NavDropdown.Item as={NavLink} to="/dashboard">Dashboard</NavDropdown.Item> */}
+                        <NavDropdown.Item as={NavLink} to="/creategroup">Helmet</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to="/users">Persons</NavDropdown.Item>
+                        <NavDropdown.Item as={NavLink} to="/train">Train</NavDropdown.Item>
                     {userProfile ? (
                         userProfile.isAdmin ? (<NavDropdown.Item as={NavLink} to='/signup'>Create Account</NavDropdown.Item>):(null)
                         ):(null)
                     }
+                        {/* <NavDropdown.Item as={NavLink} to='/signup'>Create Account</NavDropdown.Item> */}
                     
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         </Navbar.Collapse>
-         <div style={{ position: "fixed", right: 0, bottom: 0 }}>
-              <NavLink to="/scan">
-                <Button variant="light" style={{ borderRadius: '30px 30px 30px 30px', padding: '15px', margin: '20px' }}>
-                  <FaBarcode style={{ fontSize: '30px', color: 'black' }} />
-                </Button>
-              </NavLink>
-            </div>
-            </div>
+         
+        </div>
     );
 }
 

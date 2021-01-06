@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Form, Button, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
 import { Redirect } from 'react-router-dom'
 
@@ -20,10 +20,8 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type:'SIGNUP', user})
-        console.log(user)
     }
     const checkChange = (e) => {
-        // console.log(document.getElementById([e.target.id]).checked)
         
         setUser({
             ...user,
