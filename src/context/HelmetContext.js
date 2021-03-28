@@ -8,6 +8,7 @@ const HelmetContextProvider = (props) => {
     const [helmet, dispatch] = useReducer(HelmetReducer, [])
 
     useEffect(() => {
+        
         const unsubscribe = firebase
             .firestore()
             .collection('helmets')
